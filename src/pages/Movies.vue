@@ -1,34 +1,84 @@
 <template>
-  <div>
-    <div>Movies</div>
-    <a class="link-info" @click="getMoviesbyYear()">2010-2020</a>
+  <div class="container-fluid">
+    <div class="row">
+      <h1>Movies</h1>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="years-container">
+            Years
+            <div class="row">
+              <a
+                class="link-info"
+                @click="
+                  this.$store.commit('getMoviesbyYear', {
+                    year1: 2020,
+                    year2: 2021,
+                  })
+                "
+                >2020-2021</a
+              >
+            </div>
+            <div class="row">
+              <a
+                class="link-info"
+                @click="
+                  this.$store.commit('getMoviesbyYear', {
+                    year1: 2010,
+                    year2: 2020,
+                  })
+                "
+                >2010-2020</a
+              >
+            </div>
+            <div class="row">
+              <a
+                class="link-info"
+                @click="
+                  this.$store.commit('getMoviesbyYear', {
+                    year1: 2000,
+                    year2: 2010,
+                  })
+                "
+                >2000-2010</a
+              >
+            </div>
+            <div class="row">
+              <a
+                class="link-info"
+                @click="
+                  this.$store.commit('getMoviesbyYear', {
+                    year1: 1960,
+                    year2: 2000,
+                  })
+                "
+                >1960-2000</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+            <Cards/>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import Cards from "@/components/Cards";
 export default {
   data() {
-    return {
-      
-    };
+    return {};
   },
-  methods: {
-    getMoviesbyYear() {
-      axios
-        .get(
-          `${this.discoverUrl}?api_key=${this.apiKey}&primary_release_date.gte=${this.year1}-01-01&primary_release_date.lte=${this.year2}-12-31&page=${this.pageNo}`
-        )
-        .then((res) => {
-          console.log(res.data);
-        })
-        .catch((err) => console.log(err));
-    },
-  },
+  methods: {},
+  components:{
+      Cards,
+  }
 };
 </script>
+
 <style>
-a{
-    cursor: pointer;
+a {
+  cursor: pointer;
 }
 </style>
