@@ -5,11 +5,12 @@ import axios from "axios";
 
 const store = createStore({
     state: {
+        apiKey: "24eddd44b256251f253d6d5c6dc7fea0",
         searchUrl : "https://api.themoviedb.org/3/search/movie",
         discoverUrl: "https://api.themoviedb.org/3/discover/movie",
         baseImageUrl: "https://image.tmdb.org/t/p/w500",
         popularActorsUrl:"https://api.themoviedb.org/3/person/popular",
-        apiKey: "24eddd44b256251f253d6d5c6dc7fea0",
+        videoUrl:"https://api.themoviedb.org/3/movie",
         searchText:"",
         pageNo: 1,
         filmsData: "",
@@ -59,7 +60,17 @@ const store = createStore({
               state.filmsData=res.data.results;
             })  
             .catch((err) => console.log(err))
-          }
+          },
+
+          watch(state,filmId){
+            axios.get(`${state.videoUrl}/${filmId}/videos?api_key=${state.apiKey}`)
+            .then((res) => {
+              console.log("watch",res)
+            //   setModalFlag(true);
+          })  
+          .catch((err) => console.log(err));
+        //   setModalFlag(false) ;
+        }
     },
 
 })

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
       <div class="container-fluid">
         <!-- logo comes here <a class="navbar-brand" href="#"></a> -->
         <button
@@ -23,9 +23,6 @@
               <router-link class="nav-link" to="/movies">Movies</router-link>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/series">Series</router-link>
-            </li>
-            <li class="nav-item">
               <router-link class="nav-link" to="/contact">Contact</router-link>
             </li>
           </ul>
@@ -35,3 +32,10 @@
     <router-view></router-view>
   </div>
 </template>
+
+<style>
+  .navbar{
+    background-color: #303F52;
+    opacity: .9;
+  }
+</style>

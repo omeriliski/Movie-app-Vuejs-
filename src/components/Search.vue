@@ -7,7 +7,7 @@
         aria-label="Sizing example input"
         aria-describedby="inputGroup-sizing-sm"
         v-model="this.$store.state.searchText"
-        @keydown="this.$store.commit('searchMoviebyText',{})"
+        @keyup="this.$store.commit('searchMoviebyText')"
       />
     </div>
   </div>

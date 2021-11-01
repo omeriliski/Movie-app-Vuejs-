@@ -7,12 +7,12 @@
           class="card-img-top"
           alt="..."
         />
-        <img v-else src="../assets/no_image_available.png" class="card-img-top" alt="">
+        <img v-else src="../assets/no_image_available.png" class="no-img card-img-top" alt="">
         <div class="card-body">
           <h5 class="card-title">{{ filmData.title }}</h5>
           <p class="card-text">{{ filmData.overview }}</p>
           <h6>{{ filmData.vote_average }}</h6>
-          <a href="#" class="btn btn-primary">Go to Details</a>
+          <a @click="this.$store.commit('watch',filmData.id)" class="btn btn-primary">Go to Details</a>
         </div>
       </div>
     </div>
@@ -25,6 +25,9 @@
 }
 .card-title {
   height: 50px;
+}
+.no-img,.card-img-top{
+  height: 430px;
 }
 .card-text {
   height: 100px;

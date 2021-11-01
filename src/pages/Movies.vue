@@ -40,7 +40,11 @@ export default {
       Search,
       Actors
   },
-  created:function() {this.$store.commit("getPopularActors")}
+  created:
+    function() {
+      this.$store.commit("getPopularActors");
+      this.$store.commit('searchMoviebyText')
+    },
 };
 </script>
 
