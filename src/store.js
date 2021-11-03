@@ -1,4 +1,4 @@
-import {
+import { 
     createStore
 } from "vuex";
 import axios from "axios";
@@ -11,13 +11,14 @@ const store = createStore({
         baseImageUrl: "https://image.tmdb.org/t/p/w500",
         popularActorsUrl:"https://api.themoviedb.org/3/person/popular",
         videoUrl:"https://api.themoviedb.org/3/movie",
+        currentFilmData:"",
         searchText:"",
         pageNo: 1,
         filmsData: "",
         popularActorsData:""
     },
     mutations: {
-        searchMoviebyText(state) {
+        searchMoviebyText(state) {  
             axios.get(state.searchUrl, {
                     params: {
                         api_key: state.apiKey,
@@ -62,10 +63,12 @@ const store = createStore({
             .catch((err) => console.log(err))
           },
 
-          watch(state,filmId){
-            axios.get(`${state.videoUrl}/${filmId}/videos?api_key=${state.apiKey}`)
+          watch(state,filmData){
+            state.currentFilmData=filmData;
+            axios.get(`${state.videoUrl}/${filmData.id}/videos?api_key=${state.apiKey}`)
             .then((res) => {
               console.log("watch",res)
+              console.log("filmaData",filmData);
             //   setModalFlag(true);
           })  
           .catch((err) => console.log(err));
